@@ -7,8 +7,10 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar, Plane, Users, Clock, MapPin, Star } from 'lucide-react';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
+  const navigate = useNavigate();
   const [searchData, setSearchData] = useState({
     departure: '',
     arrival: '',
@@ -28,7 +30,7 @@ const Index = () => {
     }
     
     toast.success('Recherche de vols en cours...');
-    // Navigation vers la page de résultats à implémenter
+    navigate('/search');
   };
 
   return (
@@ -48,16 +50,23 @@ const Index = () => {
             </div>
             
             <nav className="hidden md:flex space-x-6">
-              <a href="#" className="text-canair-blue hover:text-canair-red transition-colors">Accueil</a>
-              <a href="#" className="text-canair-blue hover:text-canair-red transition-colors">Mes Réservations</a>
-              <a href="#" className="text-canair-blue hover:text-canair-red transition-colors">Contact</a>
+              <button onClick={() => navigate('/')} className="text-canair-blue hover:text-canair-red transition-colors">Accueil</button>
+              <button onClick={() => navigate('/profile')} className="text-canair-blue hover:text-canair-red transition-colors">Mes Réservations</button>
+              <button onClick={() => navigate('/contact')} className="text-canair-blue hover:text-canair-red transition-colors">Contact</button>
             </nav>
             
             <div className="flex space-x-2">
-              <Button variant="outline" className="border-canair-blue text-canair-blue hover:bg-canair-blue hover:text-white">
+              <Button 
+                variant="outline" 
+                className="border-canair-blue text-canair-blue hover:bg-canair-blue hover:text-white"
+                onClick={() => navigate('/login')}
+              >
                 Connexion
               </Button>
-              <Button className="bg-canair-red hover:bg-canair-red/90 text-white">
+              <Button 
+                className="bg-canair-red hover:bg-canair-red/90 text-white"
+                onClick={() => navigate('/register')}
+              >
                 Inscription
               </Button>
             </div>
@@ -209,9 +218,9 @@ const Index = () => {
             <div>
               <h6 className="font-semibold mb-4">Services</h6>
               <ul className="space-y-2 text-white/80">
-                <li><a href="#" className="hover:text-canair-gold transition-colors">Réservation en ligne</a></li>
-                <li><a href="#" className="hover:text-canair-gold transition-colors">Gestion des réservations</a></li>
-                <li><a href="#" className="hover:text-canair-gold transition-colors">Check-in en ligne</a></li>
+                <li><button onClick={() => navigate('/search')} className="hover:text-canair-gold transition-colors">Réservation en ligne</button></li>
+                <li><button onClick={() => navigate('/profile')} className="hover:text-canair-gold transition-colors">Gestion des réservations</button></li>
+                <li><button onClick={() => navigate('/profile')} className="hover:text-canair-gold transition-colors">Check-in en ligne</button></li>
               </ul>
             </div>
 

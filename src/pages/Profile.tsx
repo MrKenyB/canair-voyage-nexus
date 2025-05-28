@@ -8,8 +8,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plane, User, Mail, Phone, Calendar, MapPin, Clock, Edit, Download } from 'lucide-react';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+  const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [userData, setUserData] = useState({
     firstName: 'Jean',
@@ -59,6 +61,11 @@ const Profile = () => {
     setIsEditing(false);
   };
 
+  const handleLogout = () => {
+    toast.success('Déconnexion réussie');
+    navigate('/');
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Confirmé':
@@ -98,10 +105,18 @@ const Profile = () => {
             </div>
             
             <nav className="flex space-x-4">
-              <Button variant="outline" className="border-canair-blue text-canair-blue">
+              <Button 
+                variant="outline" 
+                className="border-canair-blue text-canair-blue"
+                onClick={() => navigate('/')}
+              >
                 Retour à l'accueil
               </Button>
-              <Button variant="outline" className="border-canair-red text-canair-red">
+              <Button 
+                variant="outline" 
+                className="border-canair-red text-canair-red"
+                onClick={handleLogout}
+              >
                 Déconnexion
               </Button>
             </nav>
@@ -210,7 +225,10 @@ const Profile = () => {
                         <Plane className="w-12 h-12 mx-auto mb-4 text-gray-300" />
                         <p className="text-lg mb-2">Aucune réservation</p>
                         <p className="text-sm">Vous n'avez pas encore effectué de réservation.</p>
-                        <Button className="mt-4 bg-canair-blue hover:bg-canair-blue/90 text-white">
+                        <Button 
+                          className="mt-4 bg-canair-blue hover:bg-canair-blue/90 text-white"
+                          onClick={() => navigate('/')}
+                        >
                           Réserver un vol
                         </Button>
                       </div>

@@ -5,8 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Plane, Clock, MapPin, Users, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const SearchResults = () => {
+  const navigate = useNavigate();
   const [selectedFlight, setSelectedFlight] = useState<string | null>(null);
 
   // Données de vols fictives
@@ -51,6 +53,14 @@ const SearchResults = () => {
     toast.success('Vol sélectionné ! Procédez à la réservation.');
   };
 
+  const handleBooking = () => {
+    if (!selectedFlight) {
+      toast.error('Veuillez sélectionner un vol avant de continuer');
+      return;
+    }
+    navigate('/booking');
+  };
+
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('fr-CD', {
       style: 'currency',
@@ -65,7 +75,7 @@ const SearchResults = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Button variant="ghost" className="text-canair-blue">
+              <Button variant="ghost" className="text-canair-blue" onClick={() => navigate('/')}>
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Retour
               </Button>
@@ -217,7 +227,10 @@ const SearchResults = () => {
                             </p>
                           </div>
 
-                          <Button className="w-full bg-canair-blue hover:bg-canair-blue/90 text-white">
+                          <Button 
+                            className="w-full bg-canair-blue hover:bg-canair-blue/90 text-white"
+                            onClick={handleBooking}
+                          >
                             Continuer la réservation
                           </Button>
                         </>

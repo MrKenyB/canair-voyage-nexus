@@ -6,8 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plane, Mail, Lock, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -30,8 +32,10 @@ const Login = () => {
       
       toast.success('Connexion réussie ! Bienvenue sur CANAIR CONGO');
       
-      // Redirection vers l'accueil ou la page précédente
-      console.log('Utilisateur connecté:', credentials.email);
+      // Redirection vers l'espace personnel
+      setTimeout(() => {
+        navigate('/profile');
+      }, 1000);
       
     } catch (error) {
       toast.error('Email ou mot de passe incorrect');
@@ -112,16 +116,20 @@ const Login = () => {
 
               <div className="text-center text-sm text-gray-600">
                 Pas encore de compte ?{' '}
-                <a href="#" className="text-canair-blue hover:text-canair-red transition-colors font-semibold">
+                <button 
+                  type="button"
+                  onClick={() => navigate('/register')} 
+                  className="text-canair-blue hover:text-canair-red transition-colors font-semibold"
+                >
                   Créer un compte
-                </a>
+                </button>
               </div>
             </form>
           </CardContent>
         </Card>
 
         <div className="text-center mt-6">
-          <Button variant="ghost" className="text-white hover:text-canair-gold">
+          <Button variant="ghost" className="text-white hover:text-canair-gold" onClick={() => navigate('/')}>
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour à l'accueil
           </Button>

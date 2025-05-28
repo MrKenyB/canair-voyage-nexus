@@ -7,8 +7,10 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Plane, User, Mail, Lock, Phone, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -66,8 +68,10 @@ const Register = () => {
       
       toast.success('Inscription réussie ! Bienvenue sur CANAIR CONGO');
       
-      // Redirection vers l'accueil ou la page de connexion
-      console.log('Nouvel utilisateur inscrit:', formData);
+      // Redirection vers l'espace personnel
+      setTimeout(() => {
+        navigate('/profile');
+      }, 1000);
       
     } catch (error) {
       toast.error('Une erreur est survenue lors de l\'inscription');
@@ -229,16 +233,20 @@ const Register = () => {
 
               <div className="text-center text-sm text-gray-600">
                 Déjà un compte ?{' '}
-                <a href="#" className="text-canair-blue hover:text-canair-red transition-colors font-semibold">
+                <button 
+                  type="button"
+                  onClick={() => navigate('/login')} 
+                  className="text-canair-blue hover:text-canair-red transition-colors font-semibold"
+                >
                   Se connecter
-                </a>
+                </button>
               </div>
             </form>
           </CardContent>
         </Card>
 
         <div className="text-center mt-6">
-          <Button variant="ghost" className="text-white hover:text-canair-gold">
+          <Button variant="ghost" className="text-white hover:text-canair-gold" onClick={() => navigate('/')}>
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour à l'accueil
           </Button>

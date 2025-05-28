@@ -9,8 +9,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Plane, User, Mail, Phone, ArrowLeft, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const Booking = () => {
+  const navigate = useNavigate();
   const [passengerData, setPassengerData] = useState({
     firstName: '',
     lastName: '',
@@ -73,8 +75,10 @@ const Booking = () => {
       
       toast.success('Réservation confirmée ! Un email de confirmation vous a été envoyé.');
       
-      // Redirection vers la page de confirmation (à implémenter)
-      console.log('Réservation créée:', { passengerData, flight: selectedFlight });
+      // Redirection vers la page de profil ou d'accueil
+      setTimeout(() => {
+        navigate('/profile');
+      }, 2000);
       
     } catch (error) {
       toast.error('Une erreur est survenue. Veuillez réessayer.');
@@ -96,7 +100,7 @@ const Booking = () => {
       <header className="bg-white shadow-md">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center space-x-3">
-            <Button variant="ghost" className="text-canair-blue">
+            <Button variant="ghost" className="text-canair-blue" onClick={() => navigate('/search')}>
               <ArrowLeft className="w-4 h-4 mr-2" />
               Retour aux résultats
             </Button>
