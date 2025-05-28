@@ -44,6 +44,10 @@ const Booking = () => {
     }));
   };
 
+  const handleTermsChange = (checked: boolean | "indeterminate") => {
+    setAcceptedTerms(checked === true);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -244,7 +248,7 @@ const Booking = () => {
                     <Checkbox
                       id="terms"
                       checked={acceptedTerms}
-                      onCheckedChange={setAcceptedTerms}
+                      onCheckedChange={handleTermsChange}
                     />
                     <Label htmlFor="terms" className="text-sm">
                       J'accepte les{' '}

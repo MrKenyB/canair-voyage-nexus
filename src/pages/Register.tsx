@@ -27,6 +27,10 @@ const Register = () => {
     }));
   };
 
+  const handleTermsChange = (checked: boolean | "indeterminate") => {
+    setAcceptedTerms(checked === true);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -201,7 +205,7 @@ const Register = () => {
                 <Checkbox
                   id="terms"
                   checked={acceptedTerms}
-                  onCheckedChange={setAcceptedTerms}
+                  onCheckedChange={handleTermsChange}
                 />
                 <Label htmlFor="terms" className="text-xs">
                   J'accepte les{' '}
