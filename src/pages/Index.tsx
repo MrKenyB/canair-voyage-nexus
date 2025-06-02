@@ -46,7 +46,7 @@ const Index = () => {
                 <Plane className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-canair-blue">CANAIR CONGO</h1>
+                <h1 className="text-2xl font-bold text-canair-blue"><strong>CANAIR CONGO</strong></h1>
                 <p className="text-sm text-gray-600">Canadian Airways Congo</p>
               </div>
             </div>
@@ -116,22 +116,24 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Hero Section with Background */}
+      {/* Hero Section with Airplane Image */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-canair-blue via-canair-navy to-canair-blue-light">
-          <div className="absolute inset-0 bg-black/20"></div>
-          {/* Geometric patterns for visual interest */}
-          <div className="absolute top-0 right-0 w-1/2 h-full opacity-10">
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <defs>
-                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5"/>
-                </pattern>
-              </defs>
-              <rect width="100" height="100" fill="url(#grid)"/>
-            </svg>
-          </div>
+        {/* Background with Airplane Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=3498&q=80" 
+            alt="Avion en vol" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-canair-blue/80 via-canair-navy/70 to-canair-blue/60"></div>
+        </div>
+
+        {/* Floating airplane elements */}
+        <div className="absolute top-20 right-10 opacity-20 animate-bounce">
+          <Plane className="w-16 h-16 text-white transform rotate-45" />
+        </div>
+        <div className="absolute bottom-20 left-10 opacity-15 animate-pulse">
+          <Plane className="w-12 h-12 text-canair-gold transform -rotate-12" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
@@ -140,8 +142,8 @@ const Index = () => {
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               Volez avec confiance
             </h2>
-            <h3 className="text-3xl md:text-5xl font-light text-canair-gold mb-8">
-              CANAIR CONGO
+            <h3 className="text-3xl md:text-5xl font-black text-canair-gold mb-8">
+              <strong>CANAIR CONGO</strong>
             </h3>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
               Votre compagnie aérienne de référence pour tous vos déplacements à travers le Congo. 
@@ -239,12 +241,17 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Features Section with Airplane Visuals */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Background airplane silhouette */}
+        <div className="absolute top-10 right-0 opacity-5">
+          <Plane className="w-96 h-96 text-canair-blue transform rotate-12" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-bold text-canair-blue mb-4">
-              Pourquoi choisir CANAIR CONGO ?
+              Pourquoi choisir <strong>CANAIR CONGO</strong> ?
             </h3>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Une expérience de voyage exceptionnelle avec des standards internationaux
@@ -292,8 +299,16 @@ const Index = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-canair-blue to-canair-navy">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-gradient-to-r from-canair-blue to-canair-navy relative overflow-hidden">
+        {/* Airplane graphics */}
+        <div className="absolute top-0 left-0 opacity-10">
+          <Plane className="w-32 h-32 text-white transform -rotate-45" />
+        </div>
+        <div className="absolute bottom-0 right-0 opacity-10">
+          <Plane className="w-40 h-40 text-canair-gold transform rotate-45" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold text-white mb-2">10+</div>
@@ -325,7 +340,7 @@ const Index = () => {
                   <Plane className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h5 className="text-xl font-bold">CANAIR CONGO</h5>
+                  <h5 className="text-xl font-black"><strong>CANAIR CONGO</strong></h5>
                   <p className="text-sm text-white/80">Canadian Airways Congo</p>
                 </div>
               </div>
@@ -387,7 +402,7 @@ const Index = () => {
           </div>
 
           <div className="border-t border-white/20 mt-12 pt-8 text-center text-white/80">
-            <p>&copy; 2024 CANAIR CONGO - Tous droits réservés | Conçu à Pointe Noire, Congo Brazzaville</p>
+            <p>&copy; 2024 <strong>CANAIR CONGO</strong> - Tous droits réservés | Conçu à Pointe Noire, Congo Brazzaville</p>
           </div>
         </div>
       </footer>
