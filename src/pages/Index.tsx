@@ -116,21 +116,23 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Hero Section with Commercial Airplane */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
-        {/* Background with Commercial Airplane */}
+      {/* Hero Section with Clean Airplane Design */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+        {/* Airplane Image - Clean and Centered */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <img 
-            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" 
-            alt="Avion commercial en vol" 
-            className="w-full h-full object-cover opacity-90"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-canair-blue/80 via-canair-navy/70 to-canair-blue/60"></div>
+          <div className="relative w-full max-w-6xl mx-auto">
+            <img 
+              src="/lovable-uploads/bb082b19-ea83-4a33-b916-11ac6e96239e.png" 
+              alt="Avion commercial CANAIR CONGO" 
+              className="w-full h-auto opacity-20 object-contain"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-canair-blue/10 via-transparent to-canair-navy/5"></div>
         </div>
 
         {/* Floating airplane elements */}
         <div className="absolute top-20 right-10 opacity-20 animate-bounce">
-          <Plane className="w-16 h-16 text-white transform rotate-45" />
+          <Plane className="w-16 h-16 text-canair-blue transform rotate-45" />
         </div>
         <div className="absolute bottom-20 left-10 opacity-15 animate-pulse">
           <Plane className="w-12 h-12 text-canair-gold transform -rotate-12" />
@@ -139,13 +141,13 @@ const Index = () => {
         <div className="relative z-10 container mx-auto px-4 text-center">
           {/* Main Heading */}
           <div className="animate-fade-in mb-12">
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-5xl md:text-7xl font-bold text-canair-blue mb-6 leading-tight">
               Volez avec confiance
             </h2>
             <h3 className="text-3xl md:text-5xl font-black text-canair-gold mb-8">
               <strong>CANAIR CONGO</strong>
             </h3>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
               Votre compagnie aérienne de référence pour tous vos déplacements à travers le Congo. 
               Excellence, ponctualité et sécurité à chaque vol.
             </p>
