@@ -5,12 +5,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Plane, Users, Clock, MapPin, Star } from 'lucide-react';
+import { Calendar, Plane, Users, Clock, MapPin, Star, Shield, Globe, CheckCircle, Menu, X } from 'lucide-react';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchData, setSearchData] = useState({
     departure: '',
     arrival: '',
@@ -34,13 +35,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-canair-blue via-canair-navy to-canair-blue-light">
-      {/* Header Navigation */}
-      <header className="relative z-10 bg-white/95 backdrop-blur-sm shadow-lg">
+    <div className="min-h-screen">
+      {/* Navigation Header */}
+      <header className="absolute top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
+            {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-canair-red to-canair-gold rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-canair-red to-canair-gold rounded-full flex items-center justify-center shadow-lg">
                 <Plane className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -49,58 +51,123 @@ const Index = () => {
               </div>
             </div>
             
-            <nav className="hidden md:flex space-x-6">
-              <button onClick={() => navigate('/')} className="text-canair-blue hover:text-canair-red transition-colors">Accueil</button>
-              <button onClick={() => navigate('/profile')} className="text-canair-blue hover:text-canair-red transition-colors">Mes Réservations</button>
-              <button onClick={() => navigate('/contact')} className="text-canair-blue hover:text-canair-red transition-colors">Contact</button>
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex space-x-8">
+              <button onClick={() => navigate('/')} className="text-canair-blue hover:text-canair-red transition-colors font-medium">Accueil</button>
+              <button onClick={() => navigate('/search')} className="text-canair-blue hover:text-canair-red transition-colors font-medium">Vols</button>
+              <button onClick={() => navigate('/profile')} className="text-canair-blue hover:text-canair-red transition-colors font-medium">Mes Réservations</button>
+              <button onClick={() => navigate('/contact')} className="text-canair-blue hover:text-canair-red transition-colors font-medium">Contact</button>
             </nav>
             
-            <div className="flex space-x-2">
+            {/* Auth Buttons */}
+            <div className="hidden lg:flex space-x-3">
               <Button 
                 variant="outline" 
-                className="border-canair-blue text-canair-blue hover:bg-canair-blue hover:text-white"
+                className="border-canair-blue text-canair-blue hover:bg-canair-blue hover:text-white transition-all"
                 onClick={() => navigate('/login')}
               >
                 Connexion
               </Button>
               <Button 
-                className="bg-canair-red hover:bg-canair-red/90 text-white"
+                className="bg-canair-red hover:bg-canair-red/90 text-white shadow-lg"
                 onClick={() => navigate('/register')}
               >
                 Inscription
               </Button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="lg:hidden p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
+              <nav className="flex flex-col space-y-3 mt-4">
+                <button onClick={() => navigate('/')} className="text-left text-canair-blue hover:text-canair-red transition-colors">Accueil</button>
+                <button onClick={() => navigate('/search')} className="text-left text-canair-blue hover:text-canair-red transition-colors">Vols</button>
+                <button onClick={() => navigate('/profile')} className="text-left text-canair-blue hover:text-canair-red transition-colors">Mes Réservations</button>
+                <button onClick={() => navigate('/contact')} className="text-left text-canair-blue hover:text-canair-red transition-colors">Contact</button>
+                <div className="flex space-x-2 pt-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="border-canair-blue text-canair-blue"
+                    onClick={() => navigate('/login')}
+                  >
+                    Connexion
+                  </Button>
+                  <Button 
+                    size="sm"
+                    className="bg-canair-red hover:bg-canair-red/90 text-white"
+                    onClick={() => navigate('/register')}
+                  >
+                    Inscription
+                  </Button>
+                </div>
+              </nav>
+            </div>
+          )}
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative py-20 px-4">
-        <div className="container mx-auto text-center">
-          <div className="animate-fade-in">
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Volez avec 
-              <span className="text-canair-gold"> CANAIR CONGO</span>
+      {/* Hero Section with Background */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-gradient-to-br from-canair-blue via-canair-navy to-canair-blue-light">
+          <div className="absolute inset-0 bg-black/20"></div>
+          {/* Geometric patterns for visual interest */}
+          <div className="absolute top-0 right-0 w-1/2 h-full opacity-10">
+            <svg viewBox="0 0 100 100" className="w-full h-full">
+              <defs>
+                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#grid)"/>
+            </svg>
+          </div>
+        </div>
+
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          {/* Main Heading */}
+          <div className="animate-fade-in mb-12">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              Volez avec confiance
             </h2>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Votre compagnie aérienne de confiance pour tous vos déplacements à travers le Congo
+            <h3 className="text-3xl md:text-5xl font-light text-canair-gold mb-8">
+              CANAIR CONGO
+            </h3>
+            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Votre compagnie aérienne de référence pour tous vos déplacements à travers le Congo. 
+              Excellence, ponctualité et sécurité à chaque vol.
             </p>
           </div>
 
-          {/* Search Card */}
-          <Card className="max-w-4xl mx-auto mt-12 animate-slide-up bg-white/95 backdrop-blur-sm shadow-2xl">
-            <CardHeader>
-              <CardTitle className="text-2xl text-canair-blue flex items-center justify-center gap-2">
-                <Plane className="w-6 h-6" />
-                Rechercher un vol
+          {/* Search Form */}
+          <Card className="max-w-5xl mx-auto animate-slide-up bg-white/95 backdrop-blur-sm shadow-2xl border-0">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-2xl text-canair-blue flex items-center justify-center gap-3">
+                <div className="w-8 h-8 bg-gradient-to-br from-canair-red to-canair-gold rounded-full flex items-center justify-center">
+                  <Plane className="w-4 h-4 text-white" />
+                </div>
+                Réservez votre vol
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="departure" className="text-canair-blue font-semibold">Ville de départ</Label>
+                  <Label htmlFor="departure" className="text-canair-blue font-semibold flex items-center gap-2">
+                    <MapPin className="w-4 h-4" />
+                    Ville de départ
+                  </Label>
                   <Select value={searchData.departure} onValueChange={(value) => setSearchData({...searchData, departure: value})}>
-                    <SelectTrigger className="border-canair-blue/30 focus:border-canair-blue">
+                    <SelectTrigger className="border-canair-blue/30 focus:border-canair-blue h-12">
                       <SelectValue placeholder="Choisir une ville" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -112,9 +179,12 @@ const Index = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="arrival" className="text-canair-blue font-semibold">Ville d'arrivée</Label>
+                  <Label htmlFor="arrival" className="text-canair-blue font-semibold flex items-center gap-2">
+                    <MapPin className="w-4 h-4" />
+                    Ville d'arrivée
+                  </Label>
                   <Select value={searchData.arrival} onValueChange={(value) => setSearchData({...searchData, arrival: value})}>
-                    <SelectTrigger className="border-canair-blue/30 focus:border-canair-blue">
+                    <SelectTrigger className="border-canair-blue/30 focus:border-canair-blue h-12">
                       <SelectValue placeholder="Choisir une ville" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -126,20 +196,26 @@ const Index = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="date" className="text-canair-blue font-semibold">Date de départ</Label>
+                  <Label htmlFor="date" className="text-canair-blue font-semibold flex items-center gap-2">
+                    <Calendar className="w-4 h-4" />
+                    Date de départ
+                  </Label>
                   <Input
                     type="date"
                     value={searchData.date}
                     onChange={(e) => setSearchData({...searchData, date: e.target.value})}
-                    className="border-canair-blue/30 focus:border-canair-blue"
+                    className="border-canair-blue/30 focus:border-canair-blue h-12"
                     min={new Date().toISOString().split('T')[0]}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="passengers" className="text-canair-blue font-semibold">Passagers</Label>
+                  <Label htmlFor="passengers" className="text-canair-blue font-semibold flex items-center gap-2">
+                    <Users className="w-4 h-4" />
+                    Passagers
+                  </Label>
                   <Select value={searchData.passengers} onValueChange={(value) => setSearchData({...searchData, passengers: value})}>
-                    <SelectTrigger className="border-canair-blue/30 focus:border-canair-blue">
+                    <SelectTrigger className="border-canair-blue/30 focus:border-canair-blue h-12">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -153,9 +229,9 @@ const Index = () => {
 
               <Button 
                 onClick={handleSearch}
-                className="w-full md:w-auto bg-canair-red hover:bg-canair-red/90 text-white py-3 px-8 text-lg font-semibold"
+                className="w-full md:w-auto bg-gradient-to-r from-canair-red to-canair-gold hover:from-canair-red/90 hover:to-canair-gold/90 text-white py-4 px-12 text-lg font-semibold shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
               >
-                <Plane className="w-5 h-5 mr-2" />
+                <Plane className="w-5 h-5 mr-3" />
                 Rechercher des vols
               </Button>
             </CardContent>
@@ -164,69 +240,125 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h3 className="text-3xl font-bold text-center text-canair-blue mb-12">
-            Pourquoi choisir CANAIR CONGO ?
-          </h3>
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold text-canair-blue mb-4">
+              Pourquoi choisir CANAIR CONGO ?
+            </h3>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Une expérience de voyage exceptionnelle avec des standards internationaux
+            </p>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow border-canair-blue/20">
-              <CardContent className="pt-6">
-                <Clock className="w-12 h-12 text-canair-gold mx-auto mb-4" />
-                <h4 className="text-xl font-semibold text-canair-blue mb-2">Ponctualité</h4>
-                <p className="text-gray-600">Nos vols respectent les horaires pour votre tranquillité d'esprit</p>
+            <Card className="text-center hover:shadow-xl transition-all duration-300 border-0 shadow-lg group">
+              <CardContent className="pt-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-canair-blue to-canair-navy rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Clock className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="text-2xl font-semibold text-canair-blue mb-4">Ponctualité</h4>
+                <p className="text-gray-600 leading-relaxed">
+                  Nos vols respectent scrupuleusement les horaires pour votre tranquillité d'esprit et votre planification
+                </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow border-canair-blue/20">
-              <CardContent className="pt-6">
-                <Star className="w-12 h-12 text-canair-gold mx-auto mb-4" />
-                <h4 className="text-xl font-semibold text-canair-blue mb-2">Service de qualité</h4>
-                <p className="text-gray-600">Un service client exceptionnel à chaque étape de votre voyage</p>
+            <Card className="text-center hover:shadow-xl transition-all duration-300 border-0 shadow-lg group">
+              <CardContent className="pt-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-canair-red to-canair-gold rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Star className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="text-2xl font-semibold text-canair-blue mb-4">Service Premium</h4>
+                <p className="text-gray-600 leading-relaxed">
+                  Un service client exceptionnel et personnalisé à chaque étape de votre voyage avec nous
+                </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow border-canair-blue/20">
-              <CardContent className="pt-6">
-                <MapPin className="w-12 h-12 text-canair-gold mx-auto mb-4" />
-                <h4 className="text-xl font-semibold text-canair-blue mb-2">Réseau étendu</h4>
-                <p className="text-gray-600">Desservons toutes les principales villes du Congo</p>
+            <Card className="text-center hover:shadow-xl transition-all duration-300 border-0 shadow-lg group">
+              <CardContent className="pt-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-canair-gold to-canair-gold-light rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Globe className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="text-2xl font-semibold text-canair-blue mb-4">Couverture Nationale</h4>
+                <p className="text-gray-600 leading-relaxed">
+                  Nous desservons toutes les principales villes du Congo avec des liaisons quotidiennes
+                </p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-16 bg-gradient-to-r from-canair-blue to-canair-navy">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold text-white mb-2">10+</div>
+              <div className="text-white/80">Années d'expérience</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-white mb-2">12</div>
+              <div className="text-white/80">Destinations</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-white mb-2">50k+</div>
+              <div className="text-white/80">Passagers satisfaits</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-white mb-2">99%</div>
+              <div className="text-white/80">Ponctualité</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="bg-canair-blue text-white py-12">
+      <footer className="bg-canair-blue text-white py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-canair-red to-canair-gold rounded-full flex items-center justify-center">
-                  <Plane className="w-5 h-5 text-white" />
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-canair-red to-canair-gold rounded-full flex items-center justify-center">
+                  <Plane className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h5 className="text-lg font-bold">CANAIR CONGO</h5>
+                  <h5 className="text-xl font-bold">CANAIR CONGO</h5>
                   <p className="text-sm text-white/80">Canadian Airways Congo</p>
                 </div>
               </div>
-              <p className="text-white/80">Votre compagnie aérienne de confiance depuis plus de 10 ans.</p>
+              <p className="text-white/80 mb-4">
+                Votre compagnie aérienne de confiance depuis plus de 10 ans. 
+                Excellence et sécurité à chaque vol.
+              </p>
+              <div className="flex space-x-4">
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
+                  <span className="text-xs">f</span>
+                </div>
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
+                  <span className="text-xs">t</span>
+                </div>
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
+                  <span className="text-xs">in</span>
+                </div>
+              </div>
             </div>
 
             <div>
-              <h6 className="font-semibold mb-4">Services</h6>
-              <ul className="space-y-2 text-white/80">
+              <h6 className="font-semibold mb-6 text-canair-gold">Services</h6>
+              <ul className="space-y-3 text-white/80">
                 <li><button onClick={() => navigate('/search')} className="hover:text-canair-gold transition-colors">Réservation en ligne</button></li>
                 <li><button onClick={() => navigate('/profile')} className="hover:text-canair-gold transition-colors">Gestion des réservations</button></li>
                 <li><button onClick={() => navigate('/profile')} className="hover:text-canair-gold transition-colors">Check-in en ligne</button></li>
+                <li><button onClick={() => navigate('/contact')} className="hover:text-canair-gold transition-colors">Support client</button></li>
               </ul>
             </div>
 
             <div>
-              <h6 className="font-semibold mb-4">Destinations</h6>
-              <ul className="space-y-2 text-white/80">
+              <h6 className="font-semibold mb-6 text-canair-gold">Destinations populaires</h6>
+              <ul className="space-y-3 text-white/80">
                 <li>Kinshasa</li>
                 <li>Lubumbashi</li>
                 <li>Goma</li>
@@ -235,17 +367,27 @@ const Index = () => {
             </div>
 
             <div>
-              <h6 className="font-semibold mb-4">Contact</h6>
-              <ul className="space-y-2 text-white/80">
-                <li>+243 XXX XXX XXX</li>
+              <h6 className="font-semibold mb-6 text-canair-gold">Contact</h6>
+              <ul className="space-y-3 text-white/80">
+                <li>+242 xxxxxxxxx</li>
                 <li>info@canair-congo.com</li>
-                <li>Kinshasa, RD Congo</li>
+                <li>Pointe Noire, Congo Brazzaville</li>
+                <li className="pt-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="border-canair-gold text-canair-gold hover:bg-canair-gold hover:text-canair-blue"
+                    onClick={() => navigate('/contact')}
+                  >
+                    Nous contacter
+                  </Button>
+                </li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/80">
-            <p>&copy; 2024 CANAIR CONGO - Tous droits réservés</p>
+          <div className="border-t border-white/20 mt-12 pt-8 text-center text-white/80">
+            <p>&copy; 2024 CANAIR CONGO - Tous droits réservés | Conçu à Pointe Noire, Congo Brazzaville</p>
           </div>
         </div>
       </footer>
