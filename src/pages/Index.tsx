@@ -116,14 +116,14 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Hero Section with Airplane Image */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background with Airplane Image */}
-        <div className="absolute inset-0">
+      {/* Hero Section with Commercial Airplane */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
+        {/* Background with Commercial Airplane */}
+        <div className="absolute inset-0 flex items-center justify-center">
           <img 
-            src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=3498&q=80" 
-            alt="Avion en vol" 
-            className="w-full h-full object-cover"
+            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" 
+            alt="Avion commercial en vol" 
+            className="w-full h-full object-cover opacity-90"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-canair-blue/80 via-canair-navy/70 to-canair-blue/60"></div>
         </div>
