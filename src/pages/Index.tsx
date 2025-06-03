@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -117,22 +116,20 @@ const Index = () => {
       </header>
 
       {/* Airplane Image Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-white">
-        <div className="w-full h-full flex items-center justify-center">
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-sky-50 to-white">
+        <div className="w-full h-full flex items-center justify-center relative">
           <img 
-            src="/lovable-uploads/5c1ff750-897c-4b6f-9e9e-d966b0fd5997.png" 
-            alt="Avion commercial" 
-            className="max-w-full max-h-full object-contain"
+            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+            alt="Avion commercial moderne" 
+            className="w-full h-full object-cover filter brightness-110"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
         </div>
       </section>
 
       {/* Hero Section with Text and Form */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-50 to-blue-100">
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-canair-blue/10 via-canair-navy/5 to-canair-blue/10"></div>
-
-        <div className="relative z-10 container mx-auto px-4 text-center">
+      <section className="relative py-16 bg-white">
+        <div className="container mx-auto px-4 text-center">
           {/* Main Heading */}
           <div className="animate-fade-in mb-12">
             <h2 className="text-5xl md:text-7xl font-bold text-canair-blue mb-6 leading-tight">
@@ -148,7 +145,7 @@ const Index = () => {
           </div>
 
           {/* Search Form */}
-          <Card className="max-w-5xl mx-auto animate-slide-up bg-white/95 backdrop-blur-sm shadow-2xl border-0">
+          <Card className="max-w-5xl mx-auto animate-slide-up bg-white shadow-2xl border-0">
             <CardHeader className="pb-4">
               <CardTitle className="text-2xl text-canair-blue flex items-center justify-center gap-3">
                 <div className="w-8 h-8 bg-gradient-to-br from-canair-red to-canair-gold rounded-full flex items-center justify-center">
