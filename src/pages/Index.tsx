@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -115,21 +116,29 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Airplane Image Section */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-sky-50 to-white">
-        <div className="w-full h-full flex items-center justify-center relative">
-          <img 
-            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-            alt="Avion commercial moderne" 
-            className="w-full h-full object-cover filter brightness-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
+      {/* Hero Section with Clean Airplane Design */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+        {/* Airplane Image - Clean and Centered */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-full max-w-6xl mx-auto">
+            <img 
+              src="/lovable-uploads/bb082b19-ea83-4a33-b916-11ac6e96239e.png" 
+              alt="Avion commercial CANAIR CONGO" 
+              className="w-full h-auto opacity-20 object-contain"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-canair-blue/10 via-transparent to-canair-navy/5"></div>
         </div>
-      </section>
 
-      {/* Hero Section with Text and Form */}
-      <section className="relative py-16 bg-white">
-        <div className="container mx-auto px-4 text-center">
+        {/* Floating airplane elements */}
+        <div className="absolute top-20 right-10 opacity-20 animate-bounce">
+          <Plane className="w-16 h-16 text-canair-blue transform rotate-45" />
+        </div>
+        <div className="absolute bottom-20 left-10 opacity-15 animate-pulse">
+          <Plane className="w-12 h-12 text-canair-gold transform -rotate-12" />
+        </div>
+
+        <div className="relative z-10 container mx-auto px-4 text-center">
           {/* Main Heading */}
           <div className="animate-fade-in mb-12">
             <h2 className="text-5xl md:text-7xl font-bold text-canair-blue mb-6 leading-tight">
@@ -145,7 +154,7 @@ const Index = () => {
           </div>
 
           {/* Search Form */}
-          <Card className="max-w-5xl mx-auto animate-slide-up bg-white shadow-2xl border-0">
+          <Card className="max-w-5xl mx-auto animate-slide-up bg-white/95 backdrop-blur-sm shadow-2xl border-0">
             <CardHeader className="pb-4">
               <CardTitle className="text-2xl text-canair-blue flex items-center justify-center gap-3">
                 <div className="w-8 h-8 bg-gradient-to-br from-canair-red to-canair-gold rounded-full flex items-center justify-center">
@@ -234,7 +243,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section with Airplane Visuals */}
       <section className="py-20 bg-white relative overflow-hidden">
         {/* Background airplane silhouette */}
         <div className="absolute top-10 right-0 opacity-5">
