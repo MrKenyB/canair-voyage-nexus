@@ -116,36 +116,32 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Hero Section with Commercial Airplane */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
-        {/* Background with Commercial Airplane */}
-        <div className="absolute inset-0 flex items-center justify-center">
+      {/* Airplane Image Section */}
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-white">
+        <div className="w-full h-full flex items-center justify-center">
           <img 
-            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" 
-            alt="Avion commercial en vol" 
-            className="w-full h-full object-cover opacity-90"
+            src="/lovable-uploads/5c1ff750-897c-4b6f-9e9e-d966b0fd5997.png" 
+            alt="Avion commercial" 
+            className="max-w-full max-h-full object-contain"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-canair-blue/80 via-canair-navy/70 to-canair-blue/60"></div>
         </div>
+      </section>
 
-        {/* Floating airplane elements */}
-        <div className="absolute top-20 right-10 opacity-20 animate-bounce">
-          <Plane className="w-16 h-16 text-white transform rotate-45" />
-        </div>
-        <div className="absolute bottom-20 left-10 opacity-15 animate-pulse">
-          <Plane className="w-12 h-12 text-canair-gold transform -rotate-12" />
-        </div>
+      {/* Hero Section with Text and Form */}
+      <section className="relative py-20 bg-gradient-to-br from-blue-50 to-blue-100">
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-canair-blue/10 via-canair-navy/5 to-canair-blue/10"></div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
           {/* Main Heading */}
           <div className="animate-fade-in mb-12">
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-5xl md:text-7xl font-bold text-canair-blue mb-6 leading-tight">
               Volez avec confiance
             </h2>
             <h3 className="text-3xl md:text-5xl font-black text-canair-gold mb-8">
               <strong>CANAIR CONGO</strong>
             </h3>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
               Votre compagnie aérienne de référence pour tous vos déplacements à travers le Congo. 
               Excellence, ponctualité et sécurité à chaque vol.
             </p>
@@ -241,7 +237,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section with Airplane Visuals */}
+      {/* Features Section */}
       <section className="py-20 bg-white relative overflow-hidden">
         {/* Background airplane silhouette */}
         <div className="absolute top-10 right-0 opacity-5">
